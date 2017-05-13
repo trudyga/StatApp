@@ -1,0 +1,16 @@
+h3 {
+	margin: 3em;
+}
+
+input[type='file'] {
+	display: none;
+}
+
+label[for='file-upload'] {
+	cursor: pointer;
+}
+
+.choose-block {
+	margin-top: 3em;
+	margin-bottom: 3em;
+}

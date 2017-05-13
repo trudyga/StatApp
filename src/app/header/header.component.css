@@ -1,0 +1,13 @@
+div.masthead {
+	background-color: black;
+	background-image: url("https://unsplash.com/photos/G9i_plbfDgk");
+}
+
+div.text-header {
+	margin-top: 10em;
+	margin-bottom: 10em;
+}
+
+button.main-button {
+	margin-bottom: 5em;
+}

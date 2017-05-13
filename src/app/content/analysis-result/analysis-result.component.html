@@ -1,0 +1,68 @@
+<div class='ui middle aligned grid container'>
+<!--HERE IS SHIT-->
+	<div class='row'>
+		<form [formGroup]="analyzeForm" (ngSubmit)="doAnalyze($event)">
+			<div class='ui input'>
+				<label for='manually'> </label>
+				<input type='text' id='manually' placeholder="Sample" formControlName ="sample">
+			</div>
+			<div class='ui input'>
+		  <button type="submit" class='ui button primary'>Analyze</button>
+			</div>
+
+		</form>	
+	</div>
+
+	<div class='row'>
+		<h2 class='ui large header'>Analysis results</h2>
+	</div>
+	<div class='row'>
+		<div class='ui relaxed divided list'>
+			<div class='item'>
+				<div class='header'>
+					<h5>Mathematical expectation</h5>
+				</div>
+				<div class='content'>
+					<div class='description'>{{analysisResult.mathExpectation}}
+					</div>
+				</div>
+			</div>
+			<div class='item'>
+				<div class='header'>
+					<h5>Dispersion</h5>
+				</div>
+				<div class='content'>
+					<div class='description'>{{analysisResult.dispersion}}
+					</div>
+				</div>
+			</div>
+			<div class='item'>
+				<div class='header'>
+					<h5>Square root deviation</h5>
+				</div>
+				<div class='content'>
+					<div class='description'>{{analysisResult.squareRootDeviation}}
+					</div>
+				</div>
+			</div>
+			<div class='item'>
+				<div class='header'>
+					<h5>Assymetry factor</h5>
+				</div>
+				<div class='content'>
+					<div class='description'>{{analysisResult.assymetryFactor}}
+					</div>
+				</div>
+			</div>
+			<div class='item'>
+				<div class='header'>
+					<h5>Exessential factor</h5>
+				</div>
+				<div class='content'>
+					<div class='description'>{{analysisResult.exessentialFactor}}
+					</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+</div>
