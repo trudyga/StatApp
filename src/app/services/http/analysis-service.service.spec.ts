@@ -1,4 +1,4 @@
-import { AnalysisService } from './analysis-service.service';
+import { AnalysisHTTPService } from './analysis-service.service';
 import { Http, HttpModule } from '@angular/http';
 import 'rxjs';
 // Import models

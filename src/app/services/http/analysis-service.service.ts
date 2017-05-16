@@ -17,7 +17,7 @@ import { SecondaryAnalysisResult }
 	from './../../models/secondary-analysis/secondary-analysis.model';
 
 @Injectable()
-export class AnalysisService {
+export class AnalysisHTTPService {
 
 	apiUrl: string;
 
@@ -45,7 +45,19 @@ export class AnalysisService {
 
 	public getPrimaryAnalysis(sample: Sample): 
 		Observable<PrimaryAnalysisResult> {
-		return null;
+		return this.postData(sample, "primaryAnalysis")
+			.map(val => {
+				let res = val.WithoutCoarseValuesAnaysisResult;
+
+				return new PrimaryAnalysisResult(
+				{
+					mathExpectation: res.MathExpectation,
+					dispersion: res.Dispersion,
+					squareRootDeviation: res.StandartDeviation,
+					assymetryFactor: res.AssymetryFactor,
+					exessentialFactor: res.ExessentialFactor
+				});
+			});
 	}
 
 	public getCoarseMarkedValues(sample: Sample): 
@@ -55,7 +67,21 @@ export class AnalysisService {
 
 	public getGistogramData(sample: Sample):
 		Observable<GistogramData> {
-		return null;
+		return this.postData(sample, "primaryAnalysis/gistogram")
+			.map(val => {
+				console.dir(val);
+				let segments: any = [];
+
+				for(let segment of val.Classes) {
+					segments.push({
+						key: new Range(segment.Key.Lower,
+							segment.Key.Upper),
+						value: segment.Value
+					});
+				}
+
+				return new GistogramData(segments);
+			});
 	}
 
 	private postData(sample: Sample, url: string): Observable<any> {

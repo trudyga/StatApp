@@ -9,8 +9,13 @@ import { ContentComponent } from './content/content.component';
 import { DescriptionComponent } from './content/description/description.component';
 import { AnalysisResultComponent } from './content/analysis-result/analysis-result.component';
 import { GraphsComponent } from './content/graphs/graphs.component';
+import { SampleComponent } from './content/sample/sample.component';
+import { GistogramComponent } from './content/graphs/gistogram/gistogram.component';
 
-import { AnalysisService } from './services/http/analysis-service.service';
+import { AnalysisHTTPService } from './services/http/analysis-service.service';
+import { SampleService } from './services/sample.service';
+import { PrimaryAnalysisResultService } from './services/primary-analysis.service';
+import { GraphsService } from './services/graphs.service';
 
 const apiUrl = "http://localhost:8080/api/";
 
@@ -21,7 +26,9 @@ const apiUrl = "http://localhost:8080/api/";
     ContentComponent,
     DescriptionComponent,
     AnalysisResultComponent,
-    GraphsComponent
+    GraphsComponent,
+    SampleComponent,
+    GistogramComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,10 @@ const apiUrl = "http://localhost:8080/api/";
     ReactiveFormsModule
   ],
   providers: [
-  {provide: AnalysisService, useClass: AnalysisService },
+  {provide: AnalysisHTTPService, useClass: AnalysisHTTPService },
+  {provide: SampleService, useClass: SampleService },
+  {provide: PrimaryAnalysisResultService, useClass: PrimaryAnalysisResultService},
+  {provide: GraphsService, useClass: GraphsService},
   {provide: "API_URL", useValue: apiUrl}
   ],
   bootstrap: [AppComponent]

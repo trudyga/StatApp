@@ -5,6 +5,6 @@ export class Range {
 	constructor(lower?: number,
 		upper?: number) {
 		this.lower = lower || 0;
-		this.upper = upper && lower || 0;
+		this.upper = lower && upper || 0;
 	}
 }
