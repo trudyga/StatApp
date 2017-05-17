@@ -24,7 +24,7 @@ export class XlsxFileUploadComponent implements OnInit {
 
     this.readedSamplesStream.subscribe((samples) => {
       if (samples.length >= 2) 
-        sampleService.addSamplePair(new SamplePair(samples[0], samples[1]));
+        sampleService.addSamplePair(new SamplePair(samples[0], samples[1], samples[0].name, samples[1].name));
     });
   }
 
@@ -95,7 +95,7 @@ function parseWorkshet(worksheet: XLSX.IWorkSheet): Sample[] {
         let number = rows[j.toString()][headers[i]];
         numbers.push(number);
       }
-      samples.push(new Sample(numbers));
+      samples.push(new Sample(numbers, headers[i]));
     }
      
     console.dir(samples);

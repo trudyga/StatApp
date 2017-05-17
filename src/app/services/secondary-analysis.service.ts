@@ -4,26 +4,25 @@ import {Observable} from 'rxjs/Observable';
 import {AnalysisHTTPService} from './http/analysis-service.service';
 import {SampleService} from './sample.service';
 
-import {GistogramData} from './../models/graphs/gistogram-data.model';
 import {SamplePair} from './../models/general/sample-pair.model';
+import {SecondaryAnalysisResult} from './../models/secondary-analysis/secondary-analysis.model';
 import {LinearFunction} from './../models/secondary-analysis/linear-function.model';
 
 @Injectable()
-export class GraphsService {
-	public gistogramStream: Observable<GistogramData>;
-	public bubbleStream: Observable<SamplePair>;
-	public lineStream: Observable<LinearFunction>;
+export class SecondaryAnalysisResultService {
+	public secondaryAnalysisResultStream: Observable<SecondaryAnalysisResult>;
+	public lineSteam: Observable<LinearFunction>;
 
 	constructor(private analysisHttpService: AnalysisHTTPService,
 		private sampleService: SampleService) {
-		this.gistogramStream = sampleService.sampleStream
-			.mergeMap(sample => 
-				analysisHttpService.getGistogramData(sample));
 
-		this.bubbleStream = sampleService.samplePairStream;
-
-		this.lineStream = sampleService.samplePairStream
+		this.lineSteam = sampleService.samplePairStream
 			.mergeMap(pair => 
 				analysisHttpService.getLinearFunction(pair));
+
+		this.secondaryAnalysisResultStream = sampleService.samplePairStream
+			.mergeMap(pair => 
+				analysisHttpService.getCorelation(pair));
+
 	}
 }

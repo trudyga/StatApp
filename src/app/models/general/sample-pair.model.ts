@@ -4,9 +4,15 @@ export class SamplePair {
 	public x: Sample;
 	public y: Sample;
 
-	public constructor(x?: Sample, y?: Sample) {
+	public xName: string;
+	public yName: string;
+
+	public constructor(x?: Sample, y?: Sample,
+		xName ?: string, yName ?: string) {
 		this.x = x || new Sample();
 		this.y = y || new Sample();
+		this.xName = xName;
+		this.yName = yName;
 	}
 
 	/**

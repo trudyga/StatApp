@@ -53,7 +53,7 @@ export class GistogramComponent implements OnInit {
 			labels: dataLabels,
 		    datasets: [
 		        {
-		            label: "Gistogram of the sample data",
+		            label: gistogramData.name,
 		            backgroundColor: datasetColors,
 		            borderColor: datasetBorderColors,
 		            borderWidth: 1,

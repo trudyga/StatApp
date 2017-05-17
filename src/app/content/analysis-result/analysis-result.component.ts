@@ -63,7 +63,8 @@ export class AnalysisResultComponent implements OnInit {
 	private toPrecision(val: PrimaryAnalysisResult): PrimaryAnalysisResult {
 			let result = new PrimaryAnalysisResult();
 			for (let key in val) {
-				result[key] = (+val[key]).toPrecision(this.precision)
+				if (key != 'law')
+					result[key] = (+val[key]).toPrecision(this.precision)
 			}
 			return result;
 	}
