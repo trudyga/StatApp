@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Form, FormGroup,
  FormControl, FormBuilder, Validators} from '@angular/forms';
 
 import { Sample } from '../../models/general/sample.model';
 import { SampleService } from '../../services/sample.service';
-
 
 @Component({
   selector: 'app-sample',
@@ -12,7 +11,6 @@ import { SampleService } from '../../services/sample.service';
   styleUrls: ['./sample.component.css']
 })
 export class SampleComponent implements OnInit {
-
 	private sampleForm: FormGroup;
 
   constructor(private fb: FormBuilder,
@@ -34,18 +32,18 @@ export class SampleComponent implements OnInit {
   	if (!this.sampleForm.valid)
 			return;
 
-	let strings: string[] = 
-	this.sampleForm.controls["sample"].value
-	.split(" ");
+  	let strings: string[] = 
+  	this.sampleForm.controls["sample"].value
+  	.split(" ");
 
-	let numbers: number[] = [];
-	for (var str of strings) {
-		numbers.push(+str);
-	}
+  	let numbers: number[] = [];
+  	for (var str of strings) {
+  		numbers.push(+str);
+  	}
 
-	if (numbers) {
-		this.sampleService.addSample(new Sample(numbers));
-	}
+  	if (numbers) {
+  		this.sampleService.addSample(new Sample(numbers));
+  	}
   }
 
 }

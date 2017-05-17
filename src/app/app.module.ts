@@ -16,6 +16,8 @@ import { AnalysisHTTPService } from './services/http/analysis-service.service';
 import { SampleService } from './services/sample.service';
 import { PrimaryAnalysisResultService } from './services/primary-analysis.service';
 import { GraphsService } from './services/graphs.service';
+import { XlsxFileUploadComponent } from './content/sample/xlsx-file-upload/xlsx-file-upload.component';
+import { BubbleComponent } from './content/graphs/bubble/bubble.component';
 
 const apiUrl = "http://localhost:8080/api/";
 
@@ -28,7 +30,9 @@ const apiUrl = "http://localhost:8080/api/";
     AnalysisResultComponent,
     GraphsComponent,
     SampleComponent,
-    GistogramComponent
+    GistogramComponent,
+    XlsxFileUploadComponent,
+    BubbleComponent
   ],
   imports: [
     BrowserModule,
