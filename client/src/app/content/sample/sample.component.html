@@ -1,0 +1,25 @@
+<div class='ui middle aligned grid container'>
+<!--HERE IS SHIT-->
+	<div class='row'>
+		<div class='twelwe column wide'>
+			<form [formGroup]="sampleForm" (ngSubmit)="onSubmit($event)" class='ui form' id="sampleManual">
+				<h3 class='ui dividing header'>Enter sample manually</h3>
+				<div class='ui twelwe wide field'>
+					<label for='manually'> </label>
+					<input type='text' id='manually' placeholder="Sample" formControlName ="sample">
+				</div>
+				<div class='ui field'>
+			  		<button type="submit" class='ui button teal'>Analyze</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='twelwe column wide'>
+			<h3 class='ui dividing header'>Enter sample from excel worksheet</h3>
+		</div>
+	</div>
+	<div class='row' id="sampleExcel">
+		<app-xlsx-file-upload class='twelwe column wide'></app-xlsx-file-upload>
+	</div>
+</div>
